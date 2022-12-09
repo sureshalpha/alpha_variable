@@ -1,0 +1,20 @@
+{
+    "name": "kitamula/kitchen",
+    "type": "library",
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/laravel": ">=5.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kitamula\\Kitchen\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kitamura",
+            "email": "s.kitamura.biz@gmail.com"
+        }
+    ]
+}
