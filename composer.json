@@ -16,5 +16,16 @@
             "name": "kitamura",
             "email": "s.kitamura.biz@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kitamula\\Kitchen\\KitchenServiceProvider"
+            ],
+            "aliases": {
+                "Hello": "Kitamula\\Kitchen\\Hello"
+            }
+        }
+    },
+
 }
