@@ -16,7 +16,7 @@ class KitchenServiceProvider extends ServiceProvider
         // Console\Commands\ConfigDefault::class,
     ];
 
-    protected $routeMiddleware = [
+    protected $middlewareGroups = [
         'basicauth' => Middleware\BasicAuthMiddleware::class,
     ];
 
