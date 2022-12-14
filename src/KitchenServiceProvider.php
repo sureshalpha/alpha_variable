@@ -16,8 +16,19 @@ class KitchenServiceProvider extends ServiceProvider
         // Console\Commands\ConfigDefault::class,
     ];
 
+    /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'kitchen.basicauth' => Middleware\Authenticate::class,
+    ];
+
     protected $middlewareGroups = [
-        'basicauth' => Middleware\BasicAuthMiddleware::class,
+        'kitchen' => [
+            'kitchen.basicauth',
+        ],
     ];
 
 
@@ -88,6 +99,12 @@ class KitchenServiceProvider extends ServiceProvider
 
     protected function registerRouteMiddleware()
     {
+        // register route middleware.
+        foreach ($this->routeMiddleware as $key => $middleware) {
+            app('router')->aliasMiddleware($key, $middleware);
+        }
+
+        // register middleware group.
         foreach ($this->middlewareGroups as $key => $middleware) {
             app('router')->middlewareGroup($key, $middleware);
         }
