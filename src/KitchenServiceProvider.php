@@ -8,13 +8,20 @@ use Illuminate\Support\ServiceProvider;
 class KitchenServiceProvider extends ServiceProvider
 {
     /**
+     * @var array
+     */
+    protected $commands = [
+        Console\ConfigDefault::class,
+    ];
+
+    /**
      * Register any application services.
      *
      * @return void
      */
     public function register()
     {
-        //
+        $this->commands($this->commands);
     }
 
     /**
