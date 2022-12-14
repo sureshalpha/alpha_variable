@@ -2,8 +2,10 @@
 
 namespace Kitamula\Kitchen;
 
+use Illuminate\Contracts\Foundation\CachesConfiguration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
+use Kitamula\Kitchen\Middleware\BasicAuthMiddleware;
 
 class KitchenServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,7 @@ class KitchenServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        Console\ConfigDefault::class,
+        Console\Commands\ConfigDefault::class,
     ];
 
     /**
@@ -43,6 +45,10 @@ class KitchenServiceProvider extends ServiceProvider
 
         // 汎用Migration用
         $this->blueprintMacros();
+
+        // Middleware
+        $this->app['router']->pushMiddlewareToGroup('basicauth', BasicAuthMiddleware::class);
+
     }
 
     /**
@@ -59,4 +65,15 @@ class KitchenServiceProvider extends ServiceProvider
             $this->dateTime('to_at')->nullable();
         });
     }
+
+    // Laravel本体のconfigファイルを上書きする
+    protected function mergeConfigFor($path, $key)
+    {
+        if (! ($this->app instanceof CachesConfiguration && $this->app->configurationIsCached())) {
+            $this->app['config']->set($key, array_merge(
+                $this->app['config']->get($key, []), require $path
+            ));
+        }
+    }
+
 }
