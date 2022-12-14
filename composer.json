@@ -23,7 +23,7 @@
                 "Kitamula\\Kitchen\\KitchenServiceProvider"
             ],
             "aliases": {
-                "Hello": "Kitamula\\Kitchen\\Hello"
+                "Scopable": "Kitamula\\Kitchen\\Traits\\Scopable"
             }
         }
     }
