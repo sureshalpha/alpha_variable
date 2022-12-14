@@ -13,8 +13,13 @@ class KitchenServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        Console\Commands\ConfigDefault::class,
+        // Console\Commands\ConfigDefault::class,
     ];
+
+    protected $routeMiddleware = [
+        'basicauth' => Middleware\BasicAuthMiddleware::class,
+    ];
+
 
     /**
      * Register any application services.
@@ -24,6 +29,7 @@ class KitchenServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands($this->commands);
+        $this->registerRouteMiddleware();
     }
 
     /**
@@ -42,6 +48,10 @@ class KitchenServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Blade::directive('storage', function ($text = null) {
             return "<?php echo(asset('storage/'. $text)); ?>";
         });
+
+        //
+        $this->registerPublishing();
+
 
         // 汎用Migration用
         $this->blueprintMacros();
@@ -66,13 +76,20 @@ class KitchenServiceProvider extends ServiceProvider
         });
     }
 
-    // Laravel本体のconfigファイルを上書きする
-    protected function mergeConfigFor($path, $key)
+    /**
+     * File publishing
+     */
+    public function registerPublishing()
     {
-        if (! ($this->app instanceof CachesConfiguration && $this->app->configurationIsCached())) {
-            $this->app['config']->set($key, array_merge(
-                $this->app['config']->get($key, []), require $path
-            ));
+        if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__.'/../config' => config_path()], 'kitamula-kitchen-config');
+        }
+    }
+
+    protected function registerRouteMiddleware()
+    {
+        foreach ($this->middlewareGroups as $key => $middleware) {
+            app('router')->middlewareGroup($key, $middleware);
         }
     }
 
