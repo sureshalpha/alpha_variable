@@ -23,11 +23,13 @@ class KitchenServiceProvider extends ServiceProvider
      */
     protected $routeMiddleware = [
         'kitchen.basicauth' => Middleware\BasicAuthMiddleware::class,
+        'kitchen.ip_restriction' => Middleware\IpRestrictionMiddleware::class,
     ];
 
     protected $middlewareGroups = [
         'kitchen' => [
             'kitchen.basicauth',
+            'kitchen.ip_restriction',
         ],
     ];
 
