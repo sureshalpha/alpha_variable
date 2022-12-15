@@ -22,7 +22,7 @@ class KitchenServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'kitchen.basicauth' => Middleware\Authenticate::class,
+        'kitchen.basicauth' => Middleware\BasicAuthMiddleware::class,
     ];
 
     protected $middlewareGroups = [
