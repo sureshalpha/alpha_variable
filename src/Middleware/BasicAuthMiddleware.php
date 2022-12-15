@@ -35,7 +35,7 @@ class BasicAuthMiddleware
 
         } catch (\Throwable $th) {
             // 日付以外が入力された場合
-            dump('Basic認証の期限日が正しく入力されていません。YYYYMMDD形式やfalseを指定してください。');
+            dump('Basic認証の期限日が正しく入力されていません。YYYYMMDD,Y/M/D H:i:s形式やfalseを指定してください。');
             return $next($request);
         }
 
