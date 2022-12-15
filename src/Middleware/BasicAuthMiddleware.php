@@ -30,7 +30,6 @@ class BasicAuthMiddleware
 
         try {
             $toAt = new Carbon($toAtString);
-            // dump($toAtString);
             if ( preg_match('/^[0-9]{8}$/', $toAtString) || preg_match('/^[0-9]{4}[-\/][0-9]{2}[-\/][0-9]{2}$/', $toAtString)){
                 // 日付のみ YYYYMMDD, Y-M-D
                 // 日付のみの場合、23:59:59までを範囲にする

@@ -8,7 +8,7 @@ php artisan vendor:publish --provider="Kitamula\Kitchen\KitchenServiceProvider"
 
 ## Config
 ### Basic認証ミドルウェア
-.envで次の設定値を設定することで、RouteMiddleware "basicauth" の設定されたルートに対しBasic認証がかかる。
+.envで次の設定値を設定することで、RouteMiddleware "kitchen.basicauth" の設定されたルートに対しBasic認証がかかる。
 
 BASICAUTH_TO_ATをfalseとすることで解除。
 年月日または日時を入力することでBasic認証がかかる。
@@ -18,6 +18,20 @@ BASICAUTH_TO_ATをfalseとすることで解除。
 BASICAUTH_USER="alpha"
 BASICAUTH_PASSWORD="beta"
 BASICAUTH_TO_AT="2022-12-03 10:08:00"
+```
+### IP制限ミドルウェア
+.envで次の設定値を設定することで、RouteMiddleware "kitchen.ip_restriction" の設定されたルートに対しBasic認証がかかる。
+
+IP_RESTRICTION_TO_ATをfalseとすることで解除。
+年月日または日時を入力することでBasic認証がかかる。
+年月日を入力: 当日の23:59:59まで
+日時(年〜秒): 指定の時刻まで
+
+IP_RESTRICTION_ALLOW_IPSはカンマ区切りでGlobalIPを指定する。
+*を指定することで期間設定に関わらず全IPを許可する
+```
+IP_RESTRICTION_ALLOW_IPS=*,::1,127.0.0.1,202.214.242.193
+IP_RESTRICTION_TO_AT="2022-12-03 10:08:00"
 ```
 
 ## Model

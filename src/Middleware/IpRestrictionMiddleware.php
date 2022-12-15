@@ -21,14 +21,11 @@ class IpRestrictionMiddleware
         $dateFormatErrorMessage = 'IP制限の期限日が正しく入力されていません。YYYYMMDD,Y/M/D H:i:s形式やfalseを指定してください。';
         if(empty($toAtString)){
             // IP制限期限日が指定されていなければ認証せず通過
-            dump('期限未設定時');
-
             return $next($request);
         }
 
         try {
             $toAt = new Carbon($toAtString);
-            // dump($toAtString);
             if ( preg_match('/^[0-9]{8}$/', $toAtString) || preg_match('/^[0-9]{4}[-\/][0-9]{2}[-\/][0-9]{2}$/', $toAtString)){
                 // 日付のみ YYYYMMDD, Y-M-D
                 // 日付のみの場合、23:59:59までを範囲にする
@@ -41,8 +38,6 @@ class IpRestrictionMiddleware
 
             // 期限日より先であれば認証せず通過
             if(Carbon::now()->gte($toAt)){
-                dump('expired');
-
                 return $next($request);
             }
 
@@ -55,7 +50,6 @@ class IpRestrictionMiddleware
         // .envで設定したIPに、リクエスト元IPが含まれていなければリダイレクト
         $ips = explode(',', config('kitchen.ip_restriction_allow_ips'));
         if (in_array('*', $ips)) {
-            dump('IPチェックの結果通過');
             return $next($request);
         }
         if (!in_array($request->ip(), $ips)) {
