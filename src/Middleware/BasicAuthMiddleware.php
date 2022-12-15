@@ -20,9 +20,25 @@ class BasicAuthMiddleware
         $username = $request->getUser();
         $password = $request->getPassword();
 
-        if(empty(config('kitchen.basicauth_to_at')) || Carbon::now()->gte(new Carbon(config('kitchen.basicauth_to_at')))){
+        if(empty(config('kitchen.basicauth_to_at'))){
+            // Basic認証期限日が指定されていなければ認証せず通過
             return $next($request);
         }
+
+        try {
+            $toAt = new Carbon(config('kitchen.basicauth_to_at'));
+
+            // 期限日より先であれば認証せず通過
+            if(Carbon::now()->gte($toAt)){
+                return $next($request);
+            }
+
+        } catch (\Throwable $th) {
+            // 日付以外が入力された場合
+            dump('Basic認証の期限日が正しく入力されていません。YYYYMMDD形式やfalseを指定してください。');
+            return $next($request);
+        }
+
         if ($username == config('kitchen.basicauth_user') && $password == config('kitchen.basicauth_password')) {
             return $next($request);
         }

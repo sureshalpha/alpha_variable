@@ -1,9 +1,19 @@
 # Install
 ```
 composer require kitamula/kitchen
+php artisan vendor:publish --provider="Kitamula\Kitchen\KitchenServiceProvider"
 ```
 
 # 機能
+
+## Config
+### Basic認証ミドルウェア
+```
+BASICAUTH_USER="alpha"
+BASICAUTH_PASSWORD="Ky9g6DMtZ;"
+BASICAUTH_TO_AT="YYYYMMDD"
+```
+
 ## Model
 ```
 use \Scopable
