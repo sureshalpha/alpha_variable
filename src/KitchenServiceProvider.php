@@ -61,9 +61,6 @@ class KitchenServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Blade::directive('storage', function ($text = null) {
             return "<?php echo(asset('storage/'. $text)); ?>";
         });
-        \Illuminate\Support\Facades\Blade::directive('canonical', function () {
-            return "<?php echo(url()->current()); ?>";
-        });
         \Illuminate\Support\Facades\Blade::directive('ogurl', function () {
             return "<?php echo(url()->current()); ?>";
         });
