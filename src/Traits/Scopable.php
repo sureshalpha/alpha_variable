@@ -68,7 +68,7 @@ trait Scopable
     * @param array $columsn ['url' => 'url_*', 'text'=>'url_*_text'] 等としてグループ化したいカラムを指定。*は1〜$countまで代入される。
     * @param array|string $mainColumns ['image_*'] 等としてメインカラムを指定。メインカラムがemptyの場合はグループの取り出しがスキップされる。
     */
-    public function columnGroup(int $count, array $columns, array|string $mainColumns)
+    public function columnGroup(int $count, array $columns, $mainColumns)
     {
         $records = new \Illuminate\Support\Collection();
         for ($i=1; $i <= $count; $i++) {
