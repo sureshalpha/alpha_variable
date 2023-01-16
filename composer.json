@@ -24,7 +24,8 @@
             ],
             "aliases": {
                 "Scopable": "Kitamula\\Kitchen\\Traits\\Scopable",
-                "Hyperlinkable": "Kitamula\\Kitchen\\Traits\\Hyperlinkable"
+                "Hyperlinkable": "Kitamula\\Kitchen\\Traits\\Hyperlinkable",
+                "SerializeDate": "Kitamula\\Kitchen\\Traits\\SerializeDate"
             }
         }
     }
