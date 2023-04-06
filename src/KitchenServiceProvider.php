@@ -67,6 +67,9 @@ class KitchenServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Blade::directive('ogtype', function () {
             return "<?php echo(!empty(\Route::current()) && \Route::current()->getName() && \Route::current()->getName() == 'index') ? 'website' : 'article'; ?>";
         });
+        \Illuminate\Support\Facades\Blade::directive('url2link', function ($string) {
+            return "<?php echo(preg_replace( '/((?:https?):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/', '<a href=\"$1\" target=\"_blank\">$1</a>', $string )) ?>";
+        });
 
         //
         $this->registerPublishing();

@@ -87,6 +87,13 @@ $table->termDateTime();
 ```
 
 ## Blade
+### ogtypeを設定する関数
+```
+<meta property="og:type" content="@ogtype()" />
+```
+TOPページ(ルーティング設定にてnameが'index'となっているルート)の場合のみ'website'、
+それ以外は'article'と出力される
+
 ### ストレージへのPATHを返す関数
 ```
 @storage($path)
@@ -95,4 +102,9 @@ $table->termDateTime();
 ### 改行を`<br>`に変換する関数
 ```
 @nl2br($text)
+```
+
+### 文字列内の全てのURLを`<a href="$1" target="_blank">$1</a>`に変換する関数
+```
+@url2link(nl2br($text))
 ```
