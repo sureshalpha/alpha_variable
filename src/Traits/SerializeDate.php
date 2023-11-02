@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitamula\Kitchen\Traits;
+namespace sureshalpha\alpha_variable\Traits;
 
 use DateTimeInterface;
 
