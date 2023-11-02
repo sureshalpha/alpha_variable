@@ -1,5 +1,5 @@
 {
-    "name": "kitamula/kitchen",
+    "name": "sureshalpha/alpha_variable",
     "type": "library",
     "require": {
         "php": ">=7.0.0",
@@ -8,7 +8,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Kitamula\\Kitchen\\": "src/"
+            "sureshalph\\alpha_variable\\": "src/"
         }
     },
     "authors": [
@@ -20,12 +20,12 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kitamula\\Kitchen\\KitchenServiceProvider"
+                "sureshalph\\alpha_variable\\AlphaServiceProvider"
             ],
             "aliases": {
-                "Scopable": "Kitamula\\Kitchen\\Traits\\Scopable",
-                "Hyperlinkable": "Kitamula\\Kitchen\\Traits\\Hyperlinkable",
-                "SerializeDate": "Kitamula\\Kitchen\\Traits\\SerializeDate"
+                "Scopable": "sureshalph\\alpha_variable\\Traits\\Scopable",
+                "Hyperlinkable": "sureshalph\\alpha_variable\\Traits\\Hyperlinkable",
+                "SerializeDate": "sureshalph\\alpha_variable\\Traits\\SerializeDate"
             }
         }
     }
