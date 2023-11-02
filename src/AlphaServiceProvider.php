@@ -7,7 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
 use Kitamula\Kitchen\Middleware\BasicAuthMiddleware;
 
-class KitchenServiceProvider extends ServiceProvider
+class AlphaServiceProvider extends ServiceProvider
 {
     /**
      * @var array
