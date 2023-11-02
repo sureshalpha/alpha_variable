@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitamula\Kitchen\Middleware;
+namespace sureshalpha\alpha_variable\Middleware;
 
 use Carbon\Carbon;
 use Closure;
@@ -21,7 +21,7 @@ class BasicAuthMiddleware
         $password = $request->getPassword();
 
         // configに指定された日付の型チェック
-        $toAtString = config('kitchen.basicauth_to_at');
+        $toAtString = config('alpha_variable.basicauth_to_at');
         $dateFormatErrorMessage = 'Basic認証の期限日が正しく入力されていません。YYYYMMDD,Y/M/D H:i:s形式やfalseを指定してください。';
         if(empty($toAtString)){
             // Basic認証期限日が指定されていなければ認証せず通過
@@ -51,7 +51,7 @@ class BasicAuthMiddleware
             return $next($request);
         }
 
-        if ($username == config('kitchen.basicauth_user') && $password == config('kitchen.basicauth_password')) {
+        if ($username == config('alpha_variable.basicauth_user') && $password == config('alpha_variable.basicauth_password')) {
             return $next($request);
         }
 
