@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitamula\Kitchen;
+namespace sureshalpha\alpha_variable;
 
 class Hello
 {
@@ -8,7 +8,7 @@ class Hello
 
     public function __construct()
     {
-        $this->here = 'kitamula\kitchen';
+        $this->here = 'sureshalpha\alpha_variable';
     }
 
     public function say()
