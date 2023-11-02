@@ -1,7 +1,7 @@
 # Install
 ```
-composer require kitamula/kitchen
-php artisan vendor:publish --provider="Kitamula\Kitchen\KitchenServiceProvider"
+composer require sureshalpha/alpha_variable
+php artisan vendor:publish --provider="sureshalpha\alpha_variable\AlphaServiceProvider"
 ```
 
 # 機能
