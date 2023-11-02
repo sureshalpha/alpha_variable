@@ -1,11 +1,11 @@
 <?php
 
-namespace Kitamula\Kitchen;
+namespace sureshalpha\alpha_variable;
 
 use Illuminate\Contracts\Foundation\CachesConfiguration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
-use Kitamula\Kitchen\Middleware\BasicAuthMiddleware;
+use sureshalpha\alpha_variable\Middleware\BasicAuthMiddleware;
 
 class AlphaServiceProvider extends ServiceProvider
 {
