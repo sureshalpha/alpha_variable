@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitamula\Kitchen\Traits;
+namespace namespace sureshalpha\alpha_variable\Traits;
 
 trait Hyperlinkable
 {
