@@ -22,14 +22,14 @@ class AlphaServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'kitchen.basicauth' => Middleware\BasicAuthMiddleware::class,
-        'kitchen.ip_restriction' => Middleware\IpRestrictionMiddleware::class,
+        'alpha_variable.basicauth' => Middleware\BasicAuthMiddleware::class,
+        'alpha_variable.ip_restriction' => Middleware\IpRestrictionMiddleware::class,
     ];
 
     protected $middlewareGroups = [
-        'kitchen' => [
-            'kitchen.basicauth',
-            'kitchen.ip_restriction',
+        'alpha_variable' => [
+            'alpha_variable.basicauth',
+            'alpha_variable.ip_restriction',
         ],
     ];
 
