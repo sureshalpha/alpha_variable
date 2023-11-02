@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitamula\Kitchen\Middleware;
+namespace sureshalpha\alpha_variable\Middleware;
 
 use Carbon\Carbon;
 use Closure;
@@ -17,7 +17,7 @@ class IpRestrictionMiddleware
     */
     public function handle($request, Closure $next)
     {
-        $toAtString = config('kitchen.ip_restriction_to_at');
+        $toAtString = config('alpha_variable.ip_restriction_to_at');
         $dateFormatErrorMessage = 'IP制限の期限日が正しく入力されていません。YYYYMMDD,Y/M/D H:i:s形式やfalseを指定してください。';
         if(empty($toAtString)){
             // IP制限期限日が指定されていなければ認証せず通過
@@ -48,7 +48,7 @@ class IpRestrictionMiddleware
         }
 
         // .envで設定したIPに、リクエスト元IPが含まれていなければリダイレクト
-        $ips = explode(',', config('kitchen.ip_restriction_allow_ips'));
+        $ips = explode(',', config('alpha_variable.ip_restriction_allow_ips'));
         if (in_array('*', $ips)) {
             return $next($request);
         }
